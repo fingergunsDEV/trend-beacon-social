@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const data = [
   { name: 'Jan', facebook: 4000, twitter: 2400, instagram: 2400 },
@@ -22,29 +22,13 @@ const PerformanceChart = () => {
       <CardHeader className="flex flex-row items-center justify-between pb-8">
         <CardTitle>Social Performance</CardTitle>
         <div className="flex items-center">
-          <TabsList>
-            <TabsTrigger 
-              value="7d" 
-              onClick={() => setPeriod('7d')}
-              className={period === '7d' ? 'data-[state=active]:bg-primary data-[state=active]:text-white' : ''}
-            >
-              7d
-            </TabsTrigger>
-            <TabsTrigger 
-              value="30d" 
-              onClick={() => setPeriod('30d')}
-              className={period === '30d' ? 'data-[state=active]:bg-primary data-[state=active]:text-white' : ''}
-            >
-              30d
-            </TabsTrigger>
-            <TabsTrigger 
-              value="90d" 
-              onClick={() => setPeriod('90d')}
-              className={period === '90d' ? 'data-[state=active]:bg-primary data-[state=active]:text-white' : ''}
-            >
-              90d
-            </TabsTrigger>
-          </TabsList>
+          <Tabs defaultValue="7d" value={period} onValueChange={setPeriod}>
+            <TabsList>
+              <TabsTrigger value="7d">7d</TabsTrigger>
+              <TabsTrigger value="30d">30d</TabsTrigger>
+              <TabsTrigger value="90d">90d</TabsTrigger>
+            </TabsList>
+          </Tabs>
         </div>
       </CardHeader>
       <CardContent>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 
 // Mock data for platform engagement
 const platforms = [
@@ -43,8 +44,7 @@ const PlatformEngagement = () => {
               </div>
               <Progress
                 value={platform.engagement}
-                className="h-2"
-                indicatorClassName={platform.color}
+                className={cn("h-2", platform.color)}
               />
             </div>
           ))}
